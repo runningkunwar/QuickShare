@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import Photos
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, PHPhotoLibraryChangeObserver {
     
+    var images: PHFetchResult = PHFetchResult()
+    var imageManager = PHCachingImageManager()
+
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
@@ -17,7 +21,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        images = PHAsset.fetchAssetsWithMediaType(.Image, options: nil)
+        PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
     }
     
     override func viewWillLayoutSubviews() {
@@ -32,12 +37,19 @@ class ViewController: UIViewController {
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10//items.count
+        return images.count
     }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("photoCell", forIndexPath: indexPath) as PhotoCollectionViewCell
+        
+
+        if var imageAsset = images.objectAtIndex(indexPath.item) as? PHAsset {
+            self.imageManager.requestImageForAsset(imageAsset, targetSize: CGSize(width: 320, height: 320), contentMode: .AspectFill, options: nil) { image, info in
+                cell.imageView.image = image
+            }
+        }
         
         return cell
     }
@@ -57,6 +69,11 @@ class ViewController: UIViewController {
         return CGSizeMake(CGFloat(itemWidth), CGFloat(itemWidth))
     }
 
+    // MARK: - PHPhotoLibraryChangeObserver
+        
+    func photoLibraryDidChange(changeInstance: PHChange!) {
     
-}
+    }
+ 
 
+}

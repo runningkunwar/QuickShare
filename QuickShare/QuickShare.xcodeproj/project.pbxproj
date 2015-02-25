@@ -173,6 +173,7 @@
 				TargetAttributes = {
 					95BE1F471A943800007DD0E5 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = Z99T2HWAJ6;
 					};
 					95BE1F5F1A943800007DD0E5 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -423,6 +424,7 @@
 				95BE1F6C1A943800007DD0E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		95BE1F6D1A943800007DD0E5 /* Build configuration list for PBXNativeTarget "QuickShareTests" */ = {
 			isa = XCConfigurationList;
@@ -431,6 +433,7 @@
 				95BE1F6F1A943800007DD0E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
