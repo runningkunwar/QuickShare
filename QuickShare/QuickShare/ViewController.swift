@@ -46,7 +46,7 @@ class ViewController: UIViewController, PHPhotoLibraryChangeObserver {
         
 
         if var imageAsset = images.objectAtIndex(indexPath.item) as? PHAsset {
-            self.imageManager.requestImageForAsset(imageAsset, targetSize: CGSize(width: 320, height: 320), contentMode: .AspectFill, options: nil) { image, info in
+            self.imageManager.requestImageForAsset(imageAsset, targetSize: CGSize(width: 200, height: 200), contentMode: .AspectFill, options: nil) { image, info in
                 cell.imageView.image = image
             }
         }
@@ -57,17 +57,26 @@ class ViewController: UIViewController, PHPhotoLibraryChangeObserver {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        let itemSpacing: Float = 10//fixed in storyboard
-        var itemWidth: Float = 100.0
-        var numberOfColumns: Float = Float(Int(collectionView.width/itemWidth))
-        var totalUnusedSpace: Float = collectionView.width - Float(numberOfColumns*itemWidth) - (numberOfColumns - 1)*itemSpacing
+        //Scale up/down item size to utilize maximum space
+        let minimumInteritemSpacing = Float(self.flowLayout.minimumInteritemSpacing);
+        var itemWidth = Float(self.flowLayout.itemSize.width)
+        let itemHeight = Float(self.flowLayout.itemSize.height)
+        var numberOfColumns = Float(Int(collectionView.width/itemWidth))
         
-        var unusedSpace: Float = totalUnusedSpace/numberOfColumns
+        var totalUnusedSpace: Float = collectionView.width - (numberOfColumns*itemWidth) - (numberOfColumns - 1)*minimumInteritemSpacing
         
-        itemWidth = itemWidth + unusedSpace - 1//increase cell size to use extra space
+        var unusedSpacePerItem: Float = totalUnusedSpace/numberOfColumns
+        
+        itemWidth = itemWidth + unusedSpacePerItem//scale up/down cell size to use extra space
 
-        return CGSizeMake(CGFloat(itemWidth), CGFloat(itemWidth))
+        return CGSizeMake(CGFloat(itemWidth), CGFloat(itemHeight))
     }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        //Storyboard did not set minimumLineSpacing
+        return self.flowLayout.minimumLineSpacing
+    }
+
 
     // MARK: - PHPhotoLibraryChangeObserver
         
