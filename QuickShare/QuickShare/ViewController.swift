@@ -85,4 +85,23 @@ class ViewController: UIViewController, PHPhotoLibraryChangeObserver {
     }
  
 
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
+        let collectionViewCell = sender as PhotoCollectionViewCell
+        var photoAsset: PHAsset?
+        if let indexPath = self.collectionView.indexPathForCell(collectionViewCell) {
+            photoAsset = images.objectAtIndex(indexPath.item) as? PHAsset
+        }
+        
+        if segue.destinationViewController.title == "Detail" {
+            let detailViewController: DetailViewController = segue.destinationViewController as DetailViewController
+            detailViewController.photoAssets = photoAsset
+        }
+    }
+    
 }
