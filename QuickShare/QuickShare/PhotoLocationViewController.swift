@@ -1,20 +1,22 @@
 //
-//  ViewController.swift
+//  PhotoLocationViewController.swift
 //  QuickShare
 //
-//  Created by Kunwar on 2/17/15.
+//  Created by Kunwar on 3/17/15.
 //  Copyright (c) 2015 Kunwar. All rights reserved.
 //
 
 import UIKit
 import Photos
 
-class ViewController: UIViewController, PHPhotoLibraryChangeObserver {
-    
+//Location header with photos inside descending by date
+
+class PhotoLocationViewController: UIViewController , PHPhotoLibraryChangeObserver{
+
     var images: PHFetchResult = PHFetchResult()
     var imageManager = PHCachingImageManager()
     var photoManager = PhotoManager()
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
@@ -26,7 +28,7 @@ class ViewController: UIViewController, PHPhotoLibraryChangeObserver {
         
         
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
-                
+        
         let locationImageDict = photoManager.locationImageDict();
         
     }
@@ -36,7 +38,7 @@ class ViewController: UIViewController, PHPhotoLibraryChangeObserver {
         
         collectionView.reloadData()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -44,12 +46,12 @@ class ViewController: UIViewController, PHPhotoLibraryChangeObserver {
         
     }
     
-    //Mark - UICollectionViewDataSource
-//    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-//    
-//    }
-
-
+    // Mark - UICollectionViewDataSource
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1;
+    }
+    
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
     }
@@ -58,7 +60,7 @@ class ViewController: UIViewController, PHPhotoLibraryChangeObserver {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("photoCell", forIndexPath: indexPath) as PhotoCollectionViewCell
         
-
+        
         if var imageAsset = images.objectAtIndex(indexPath.item) as? PHAsset {
             self.imageManager.requestImageForAsset(imageAsset, targetSize: CGSize(width: 200, height: 200), contentMode: .AspectFill, options: nil) { image, info in
                 cell.imageView.image = image
@@ -67,7 +69,7 @@ class ViewController: UIViewController, PHPhotoLibraryChangeObserver {
         
         return cell
     }
-
+    
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
@@ -82,7 +84,7 @@ class ViewController: UIViewController, PHPhotoLibraryChangeObserver {
         var unusedSpacePerItem: Float = totalUnusedSpace/numberOfColumns
         
         itemWidth = itemWidth + unusedSpacePerItem//scale up/down cell size to use extra space
-
+        
         return CGSizeMake(CGFloat(itemWidth), CGFloat(itemHeight))
     }
     
@@ -90,20 +92,22 @@ class ViewController: UIViewController, PHPhotoLibraryChangeObserver {
         //Storyboard did not set minimumLineSpacing
         return self.flowLayout.minimumLineSpacing
     }
-
-
-    // MARK: - PHPhotoLibraryChangeObserver
-        
-    func photoLibraryDidChange(changeInstance: PHChange!) {
     
+    
+    // MARK: - PHPhotoLibraryChangeObserver
+    
+    func photoLibraryDidChange(changeInstance: PHChange!) {
+        
     }
+    
+    
     
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
         let collectionViewCell = sender as PhotoCollectionViewCell
         var photoAsset: PHAsset?
         if let indexPath = self.collectionView.indexPathForCell(collectionViewCell) {
@@ -115,5 +119,5 @@ class ViewController: UIViewController, PHPhotoLibraryChangeObserver {
             detailViewController.photoAssets = photoAsset
         }
     }
-    
+
 }

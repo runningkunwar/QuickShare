@@ -9,9 +9,10 @@
 import UIKit
 import Photos
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UIScrollViewDelegate {
     
     var photoAssets: PHAsset?
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     var imageManager = PHCachingImageManager()
 
@@ -23,6 +24,10 @@ class DetailViewController: UIViewController {
                 self.imageView.image = image
             }
         }
+        
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 3.0
+        scrollView.delegate = self;
     }
 
     
@@ -30,8 +35,12 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return imageView
+    }
 
-    @IBAction func cancelButtonPressed(sender: AnyObject) {
+    @IBAction func tapped(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

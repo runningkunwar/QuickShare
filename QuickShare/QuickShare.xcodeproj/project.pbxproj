@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		95363FF51AA42E61008D2AAF /* DismissSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95363FF41AA42E61008D2AAF /* DismissSegue.swift */; };
 		95363FF71AA430F8008D2AAF /* DetailViewContontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95363FF61AA430F8008D2AAF /* DetailViewContontroller.swift */; };
-		95363FF91AA4327C008D2AAF /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95363FF81AA4327C008D2AAF /* ViewController2.swift */; };
+		95363FFD1AAACD1D008D2AAF /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95363FFC1AAACD1D008D2AAF /* PhotoManager.swift */; };
+		9575C2671AB90BF400CE6C35 /* PhotoLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9575C2661AB90BF400CE6C35 /* PhotoLocationViewController.swift */; };
 		95BE1F4E1A943800007DD0E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE1F4D1A943800007DD0E5 /* AppDelegate.swift */; };
 		95BE1F511A943800007DD0E5 /* QuickShare.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95BE1F4F1A943800007DD0E5 /* QuickShare.xcdatamodeld */; };
 		95BE1F531A943800007DD0E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE1F521A943800007DD0E5 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 		95BE1F711A943C67007DD0E5 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE1F701A943C67007DD0E5 /* PhotoCollectionViewCell.swift */; };
 		95BE1F731A943D37007DD0E5 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE1F721A943D37007DD0E5 /* Photo.swift */; };
 		95BE1F751A9C2B4E007DD0E5 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BE1F741A9C2B4E007DD0E5 /* UIViewExtension.swift */; };
+		95E0CC731AACD69A007B2493 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E0CC721AACD69A007B2493 /* TabViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +37,8 @@
 /* Begin PBXFileReference section */
 		95363FF41AA42E61008D2AAF /* DismissSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissSegue.swift; sourceTree = "<group>"; };
 		95363FF61AA430F8008D2AAF /* DetailViewContontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewContontroller.swift; sourceTree = "<group>"; };
-		95363FF81AA4327C008D2AAF /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		95363FFC1AAACD1D008D2AAF /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		9575C2661AB90BF400CE6C35 /* PhotoLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLocationViewController.swift; sourceTree = "<group>"; };
 		95BE1F481A943800007DD0E5 /* QuickShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95BE1F4C1A943800007DD0E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95BE1F4D1A943800007DD0E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +53,7 @@
 		95BE1F701A943C67007DD0E5 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		95BE1F721A943D37007DD0E5 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		95BE1F741A9C2B4E007DD0E5 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		95E0CC721AACD69A007B2493 /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,17 +97,19 @@
 			children = (
 				95BE1F4D1A943800007DD0E5 /* AppDelegate.swift */,
 				95BE1F521A943800007DD0E5 /* ViewController.swift */,
+				9575C2661AB90BF400CE6C35 /* PhotoLocationViewController.swift */,
+				95363FFC1AAACD1D008D2AAF /* PhotoManager.swift */,
 				95BE1F701A943C67007DD0E5 /* PhotoCollectionViewCell.swift */,
 				95BE1F721A943D37007DD0E5 /* Photo.swift */,
 				95BE1F741A9C2B4E007DD0E5 /* UIViewExtension.swift */,
 				95363FF41AA42E61008D2AAF /* DismissSegue.swift */,
 				95363FF61AA430F8008D2AAF /* DetailViewContontroller.swift */,
+				95E0CC721AACD69A007B2493 /* TabViewController.swift */,
 				95BE1F541A943800007DD0E5 /* Main.storyboard */,
 				95BE1F571A943800007DD0E5 /* Images.xcassets */,
 				95BE1F591A943800007DD0E5 /* LaunchScreen.xib */,
 				95BE1F4F1A943800007DD0E5 /* QuickShare.xcdatamodeld */,
 				95BE1F4B1A943800007DD0E5 /* Supporting Files */,
-				95363FF81AA4327C008D2AAF /* ViewController2.swift */,
 			);
 			path = QuickShare;
 			sourceTree = "<group>";
@@ -235,13 +241,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				95BE1F751A9C2B4E007DD0E5 /* UIViewExtension.swift in Sources */,
+				95363FFD1AAACD1D008D2AAF /* PhotoManager.swift in Sources */,
 				95BE1F531A943800007DD0E5 /* ViewController.swift in Sources */,
-				95363FF91AA4327C008D2AAF /* ViewController2.swift in Sources */,
+				9575C2671AB90BF400CE6C35 /* PhotoLocationViewController.swift in Sources */,
 				95363FF51AA42E61008D2AAF /* DismissSegue.swift in Sources */,
 				95363FF71AA430F8008D2AAF /* DetailViewContontroller.swift in Sources */,
 				95BE1F711A943C67007DD0E5 /* PhotoCollectionViewCell.swift in Sources */,
 				95BE1F4E1A943800007DD0E5 /* AppDelegate.swift in Sources */,
 				95BE1F511A943800007DD0E5 /* QuickShare.xcdatamodeld in Sources */,
+				95E0CC731AACD69A007B2493 /* TabViewController.swift in Sources */,
 				95BE1F731A943D37007DD0E5 /* Photo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
